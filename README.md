@@ -27,7 +27,7 @@ This is a basic chess game built using **C++** and **Qt** (with QWidget). It fea
 │ ├── movementutils.h/.cpp # Shared logic for straight/diagonal moves
 │ └── main.cpp
 ├── resources/
-│ └── icons/ # Piece images
+│ └── icons/ # Optional: Piece images
 ├── .pro file
 └── README.md
 
