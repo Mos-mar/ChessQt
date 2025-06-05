@@ -19,17 +19,21 @@ This is a basic chess game built using **C++** and **Qt** (with QWidget). It fea
 - **IDE Recommended:** Qt Creator or VSCode with Qt plugin
 
 ## Project Structure
+```
 .
 ├── src/
-│ ├── chessboard.h/.cpp # Main board logic and UI
-│ ├── piece.h/.cpp # Base class and derived pieces
-│ ├── square.h/.cpp # Represents each board cell
-│ ├── movementutils.h/.cpp # Shared logic for straight/diagonal moves
-│ └── main.cpp
+│   ├── chessboard.h/.cpp        # Main board logic and UI
+│   ├── piece.h/.cpp             # Base class and derived pieces
+│   ├── square.h/.cpp            # Represents each board cell
+│   ├── movementutils.h/.cpp     # Shared logic for straight/diagonal moves
+│   └── main.cpp
 ├── resources/
-│ └── icons/ # Optional: Piece images
-├── .pro file
+│   └── icons/                   # Optional: Piece images
+├── QtChess.pro                  # qmake build config (if using qmake)
+├── CMakeLists.txt               # CMake build config (if using CMake)
 └── README.md
+``` 
+
 
 
 
@@ -49,6 +53,7 @@ cd build
 cmake ..
 make
 ./QtChess
+```
 
 To Do
 
@@ -57,6 +62,9 @@ To Do
     Add move history and undo
 
     Improve UI styling (piece images, highlights)
+
+
+
 
 
 
