@@ -28,5 +28,10 @@ bool Knight::isValidMove(int startRow, int startCol, int endRow, int endCol, Squ
 
 std::string Knight::getSymbol() const
 {
-   return this->getColor() == Color::WHITE ? "N" : "n";
+    return this->getColor() == Color::WHITE ? "N" : "n";
+}
+
+PieceType Knight::getType() const
+{
+ return PieceType::KNIGHT;
 }

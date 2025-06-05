@@ -14,5 +14,10 @@ bool Bishop::isValidMove(int startRow, int startCol, int endRow, int endCol, Squ
 
 std::string Bishop::getSymbol() const
 {
- return (this->getColor() == Color::WHITE) ? "B" : "b";
+    return (this->getColor() == Color::WHITE) ? "B" : "b";
+}
+
+PieceType Bishop::getType() const
+{
+ return PieceType::BISHOP;
 }

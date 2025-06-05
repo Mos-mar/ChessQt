@@ -31,5 +31,10 @@ bool King::isValidMove(int startRow, int startCol, int endRow, int endCol, Squar
 
 std::string King::getSymbol() const
 {
- return (getColor() == Color::WHITE) ? "K" : "k";
+    return (getColor() == Color::WHITE) ? "K" : "k";
+}
+
+PieceType King::getType() const
+{
+ return PieceType::KING;
 }

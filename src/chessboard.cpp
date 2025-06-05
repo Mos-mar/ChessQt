@@ -92,6 +92,17 @@ void ChessBoard::paintEvent(QPaintEvent *event)
         painter.fillRect(rect,color);
         painter.drawRect(rect);
 
+        if(this->board[i][j]->getPiece() != nullptr)
+        {
+            QString path = board[i][j]->getPiece()->getImagePath();
+            qDebug() << "Trying to load image from:" << path;
+            QPixmap pix(path);
+            if (pix.isNull())
+            {
+              qWarning() << "Failed to load pixmap from:" << path;
+            }
+            painter.drawPixmap(rect, pix.scaled(squareSize,squareSize,Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        }
     }
   }
 

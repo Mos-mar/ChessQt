@@ -8,6 +8,7 @@
 //Qt & CPP includes
 #include <QPainter>
 #include <QMainWindow>
+#include <QPixmap>
 #include <memory>
 
 
@@ -27,13 +28,13 @@ public:
 
     //methods
     void initializeBoardAndPieces(); //called in chessboard constructor.
-    void initializeWhitePieces();
-    void initializeBlackPieces();
+    void initializeWhitePieces();//inside initializeBoardAndPieces()
+    void initializeBlackPieces();//inside initializeBoardAndPieces()
     bool movePiece(Player currentPlayer);
     void displayBoard();
 
 protected:
-    void paintEvent(QPaintEvent* event) override; //override the Qt method to paint what we want inside the widget.
+    void paintEvent(QPaintEvent* event) override; //overrides the Qt method to paint what the content of board object inside the widget.
 
 
 private:

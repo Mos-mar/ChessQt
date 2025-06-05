@@ -10,8 +10,10 @@ class Square;
 #include <QDebug>
 #include <iostream>
 #include <memory>
+#include <QCoreApplication>
 
-
+//Enum for pieces
+enum class PieceType { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING };
 
 
 class Piece
@@ -26,6 +28,8 @@ public:
     virtual std::string getSymbol() const = 0;
     Color getColor() const;
     static bool isWithingGrid(int endRow, int endCol);
+    virtual PieceType getType() const = 0; // make the code DRY, avoids rewriting the images path in each child class
+    QString getImagePath() const; //will use getType()
 
 };
 

@@ -14,5 +14,10 @@ bool Rook::isValidMove(int startRow, int startCol, int endRow, int endCol, Squar
 
 std::string Rook::getSymbol() const
 {
-  return (this->getColor() == Color::WHITE) ? "R" : "r";
+    return (this->getColor() == Color::WHITE) ? "R" : "r";
+}
+
+PieceType Rook::getType() const
+{
+ return PieceType::ROOK;
 }

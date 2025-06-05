@@ -4,6 +4,7 @@
 
 //Qt & CPP includes
 
+
 Pawn::Pawn(Color color) : Piece(color)
 {
 }
@@ -40,5 +41,10 @@ return false;
 
 std::string Pawn::getSymbol() const
 {
-   return this->getColor() == Color::WHITE ? "P" : "p"; //console uses P and p , we will need QPixmap for png files for the UI
+    return this->getColor() == Color::WHITE ? "P" : "p"; //console uses P and p , we will need QPixmap for png files for the UI
+}
+
+PieceType Pawn::getType() const
+{
+ return PieceType::PAWN;
 }

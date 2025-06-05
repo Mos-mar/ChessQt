@@ -52,3 +52,6 @@ DISTFILES += images\
     images/white-queen.png \
     images/white-rook.png
 
+RESOURCES += \
+    ChessRessources.qrc
+
