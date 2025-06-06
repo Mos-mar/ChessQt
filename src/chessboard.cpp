@@ -88,7 +88,7 @@ void ChessBoard::paintEvent(QPaintEvent *event)
     for(int j = 0 ; j < 8 ; j++)
     {
         QRect rect(j * squareSize, i * squareSize, squareSize,squareSize);
-        QColor color = board[i][j]->color == Color::WHITE ? Qt::white : Qt::darkGray;
+        QColor color = board[i][j]->color == Color::WHITE ? QColor(245, 222, 179) :  QColor(160, 80, 50); // Burlywood color;
         painter.fillRect(rect,color);
         painter.drawRect(rect);
 
