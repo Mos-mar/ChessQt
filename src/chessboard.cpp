@@ -88,7 +88,7 @@ void ChessBoard::paintEvent(QPaintEvent *event)
     for(int j = 0 ; j < 8 ; j++)
     {
         QRect rect(j * squareSize, i * squareSize, squareSize,squareSize);
-        QColor color = board[i][j]->color == Color::WHITE ? QColor(245, 222, 179) :  QColor(160, 80, 50); // Burlywood color;
+        QColor color = board[i][j]->color == Color::WHITE ? QColor(245, 222, 179) :  QColor(160, 80, 50);
         painter.fillRect(rect,color);
         painter.drawRect(rect);
 
@@ -110,10 +110,59 @@ void ChessBoard::paintEvent(QPaintEvent *event)
 }
 
 
-bool ChessBoard::movePiece(Player currentPlayer)
+bool ChessBoard::movePiece(Player currentPlayer,int startRow, int startCol, int endRow, int endCol)
+{
+
+    if(!Piece::isWithingGrid(endRow,endCol))
+   {
+    return false;
+   }
+
+   Piece* pieceToMove = board[startRow][startCol]->getPiece();
+
+   if(pieceToMove == nullptr)
+   {
+    std::cout << "There's no piece at the specified starting position." << std::endl;
+    return false;
+   }
+
+   if(pieceToMove->getColor() != currentPlayer.get_color())
+   {
+    std::cout << "It's not your turn to move this piece." << std::endl;
+    return false;
+   }
+
+   //Creating a raw board and filling it with board from .h so i can pass i in isValidMove()
+   Square* rawBoard[8][8];
+      for (int i = 0; i < 8; ++i){
+          for (int j = 0; j < 8; ++j){
+              rawBoard[i][j] = board[i][j].get();
+          }
+      }
+
+   if(pieceToMove->isValidMove(startRow,startCol,endRow,endCol,rawBoard))
+   {
+      Piece* destinationPiece = board[endRow][endCol]->getPiece();
+
+      if(destinationPiece != nullptr && destinationPiece->getColor() != pieceToMove->getColor())
+      {
+        board[endRow][endCol]->setPiece(nullptr);
+      }
+      board[endRow][endCol]->setPiece(std::move(board[startRow][startCol]->getPiecePtr()));
+      board[startRow][startCol]->setPiece(nullptr); //clear original piece;
+
+
+      return true;
+   }else{
+       std::cout << "Invalid move for the " << pieceToMove->getSymbol() << ". Please try again." << std::endl;
+   }
+}
+
+void ChessBoard::mousePressEvent(QMouseEvent *event)
 {
 
 }
+
 
 ChessBoard::~ChessBoard()
 {

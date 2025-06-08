@@ -16,7 +16,12 @@ void Square::setPiece(std::unique_ptr<Piece> new_piece)
 
 Piece *Square::getPiece()
 {
-  return piece.get(); //just look at the piece no ownership
+    return piece.get(); //just look at the piece no ownership
+}
+
+std::unique_ptr<Piece> &Square::getPiecePtr()
+{
+ return piece;  //to use with setPiece to be able to use the reference of unique_ptr to move ownership
 }
 
 

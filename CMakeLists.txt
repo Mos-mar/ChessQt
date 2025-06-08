@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS
-    ${CMAKE_CURRENT_SOURCE_DIR}/forms     #NEED THIS BECAUSE ELSE IT CANT FIND chessboard.ui ...
+    ${CMAKE_CURRENT_SOURCE_DIR}/forms     #NEED THIS BECAUSE ELSE AUTOUIC CANT FIND chessboard.ui ...
 )
 
 project(Chess VERSION 0.1 LANGUAGES CXX)
