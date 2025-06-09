@@ -17,9 +17,15 @@
 ChessBoard::ChessBoard(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::ChessBoard)
+    ,whitePlayer(Color::WHITE)
+    ,blackPlayer(Color::BLACK)
 {
     ui->setupUi(this);
+    setMouseTracking(true);
+    setFocusPolicy(Qt::StrongFocus);
+    setCentralWidget(nullptr);  // Make this window "paintable" and responsive
     initializeBoardAndPieces();
+    currentPlayer = &whitePlayer;
     this->update(); //Qt actually handle the drawing and will call void paintEvent(QPaintEvent *event) on its own.
 
 
@@ -160,7 +166,36 @@ bool ChessBoard::movePiece(Player currentPlayer,int startRow, int startCol, int 
 
 void ChessBoard::mousePressEvent(QMouseEvent *event)
 {
+  qDebug() << "Mouse clicked at: " << event->pos();
+  int squareSize = width() / 8;
+  int col = event->pos().x() / squareSize;
+  int row = event->pos().y() / squareSize;
 
+  static bool selectingStart = true;
+  static int startRow, startCol;
+
+  if(!Piece::isWithingGrid(row,col)) return;
+
+  if(!pieceSelected)
+  {
+      //first click : selects piece
+      if(board[row][col]->getPiece() != nullptr && board[row][col]->getPiece()->getColor() == currentPlayer->get_color())
+      {
+          selectedSquare = {row,col};
+          pieceSelected = true;
+      }
+  }else{
+    //second click : try to move
+    int startRow = selectedSquare.first;
+    int startCol = selectedSquare.second;
+
+    if(movePiece(*currentPlayer,startRow,startCol,row,col))
+    {
+     update();//auto call paintEvent() and repaint the board
+     currentPlayer = (currentPlayer == &whitePlayer) ? &blackPlayer : &whitePlayer;
+    }
+     pieceSelected = false; // reset click state either way
+  }
 }
 
 

@@ -9,6 +9,7 @@
 #include <QPainter>
 #include <QMainWindow>
 #include <QPixmap>
+#include <QMouseEvent>
 #include <memory>
 
 
@@ -22,6 +23,12 @@ class ChessBoard : public QMainWindow
 
 private:
     std::unique_ptr<Square> board[8][8];
+    Player whitePlayer;
+    Player blackPlayer;
+    Player* currentPlayer;
+    std::pair<int, int> selectedSquare;  // to store first click (selection)
+    bool pieceSelected = false;          // whether we're selecting or moving
+
 public:
     ChessBoard(QWidget *parent = nullptr);
     ~ChessBoard();

@@ -25,7 +25,6 @@ set(PROJECT_SOURCES
     forms/chessboard.ui
     include/bishop.h
     include/chessboard.h
-    include/chessgame.h
     include/color.h
     include/king.h
     include/knight.h
@@ -38,7 +37,6 @@ set(PROJECT_SOURCES
     include/square.h
     src/bishop.cpp
     src/chessboard.cpp
-    src/chessgame.cpp
     src/king.cpp
     src/knight.cpp
     src/main.cpp
