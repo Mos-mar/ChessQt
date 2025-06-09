@@ -35,6 +35,7 @@ set(PROJECT_SOURCES
     include/queen.h
     include/rook.h
     include/square.h
+    include/boardWidget.h
     src/bishop.cpp
     src/chessboard.cpp
     src/king.cpp
@@ -47,6 +48,7 @@ set(PROJECT_SOURCES
     src/queen.cpp
     src/rook.cpp
     src/square.cpp
+    src/boardWidget.cpp
 )
 
 # Executable
