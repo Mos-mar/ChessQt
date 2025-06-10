@@ -25,7 +25,7 @@ public:
     BoardWidget(QWidget *parent = nullptr);
 
     //methods
-    void initializeBoardAndPieces();  //called in boardWidget constructor.
+    void initializeBoardAndPieces();  //called in boardWidget constructor or in Reset Menu bar.
     bool movePiece(Player* currentPlayer, int startRow, int startCol, int endRow, int endCol);
 
 protected:

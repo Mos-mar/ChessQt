@@ -23,11 +23,15 @@ class ChessBoard : public QMainWindow
     Q_OBJECT
 
 private:
+    BoardWidget* boardWidget;
 
 public:
     ChessBoard(QWidget *parent = nullptr);
     ~ChessBoard();
 
+
+private slots:
+    void on_actionReset_triggered();
 
 private:
     Ui::ChessBoard *ui;
