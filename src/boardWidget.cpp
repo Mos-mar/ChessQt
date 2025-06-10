@@ -1,3 +1,4 @@
+//Custom headers and forward declaration
 #include "boardWidget.h"
 #include "bishop.h"
 #include "king.h"
@@ -7,6 +8,7 @@
 #include "rook.h"
 #include "piece.h"
 
+//Qt & CPP includes
 #include <QPainter>
 #include <QMouseEvent>
 #include <QPixmap>
@@ -44,7 +46,9 @@ void BoardWidget::initializeBoardAndPieces()
     board[0][6]->setPiece(std::make_unique<Knight>(Color::BLACK));
     board[0][7]->setPiece(std::make_unique<Rook>(Color::BLACK));
     for (int i = 0; i < 8; ++i)
+    {
         board[1][i]->setPiece(std::make_unique<Pawn>(Color::BLACK));
+    }
 
     // White pieces
     board[7][0]->setPiece(std::make_unique<Rook>(Color::WHITE));
@@ -56,7 +60,9 @@ void BoardWidget::initializeBoardAndPieces()
     board[7][6]->setPiece(std::make_unique<Knight>(Color::WHITE));
     board[7][7]->setPiece(std::make_unique<Rook>(Color::WHITE));
     for (int i = 0; i < 8; ++i)
+    {
         board[6][i]->setPiece(std::make_unique<Pawn>(Color::WHITE));
+    }
 }
 
 void BoardWidget::paintEvent(QPaintEvent*)
@@ -92,6 +98,7 @@ void BoardWidget::paintEvent(QPaintEvent*)
 
 void BoardWidget::mousePressEvent(QMouseEvent* event)
 {
+    qDebug() << "Mouse clicked at: " << event->pos();
     int squareSize = width() / 8;
     int col = event->pos().x() / squareSize;
     int row = event->pos().y() / squareSize;

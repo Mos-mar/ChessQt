@@ -49,7 +49,7 @@ bool MovementUtil::isValidStraightMove(int startRow, int startCol, int endRow, i
 
 bool MovementUtil::isValidDiagonalMove(int startRow, int startCol, int endRow, int endCol, Color color, Square *board[][8])
 {
-  if(!Piece::isWithingGrid(endRow,endCol)) return false;
+    if(!Piece::isWithingGrid(endRow,endCol)) return false;
 
   int rowMovement = std::abs(endRow - startRow);
   int colMovement = std::abs(endCol - startCol);
@@ -73,12 +73,14 @@ bool MovementUtil::isValidDiagonalMove(int startRow, int startCol, int endRow, i
           x += rowIncrement;
           y += colIncrement;
       }
-      if(board[endRow][endCol] != nullptr &&
-         board[endRow][endCol]->getPiece()->getColor() == color){
-          return false; // friendly piece at destination
+      if(
+         board[endRow][endCol]->getPiece() != nullptr &&
+         board[endRow][endCol]->getPiece()->getColor() == color) {
+         return false; // friendly piece at destination
       }
       return true;
   }else{
+
       return false; // not diagonal
   }
 }

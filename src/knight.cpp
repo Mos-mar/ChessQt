@@ -15,13 +15,14 @@ bool Knight::isValidMove(int startRow, int startCol, int endRow, int endCol, Squ
     int rowMovement = std::abs(endRow - startRow);
     int colMovement = std::abs(endCol - startCol);
 
+
     if((rowMovement == 2 && colMovement == 1 )|| (rowMovement == 1 && colMovement == 2))
     {
-        if(board[endRow][endCol] != nullptr && board[endRow][endCol]->getPiece()->getColor()==  this->getColor())
+        if(board[endRow][endCol]->getPiece() != nullptr && board[endRow][endCol]->getPiece()->getColor() ==  this->getColor())
         {
             return false;
         }
-            return true;
+        return true;
     }
     return false;
 }

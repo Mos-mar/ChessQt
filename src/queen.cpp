@@ -14,7 +14,7 @@ bool Queen::isValidMove(int startRow, int startCol, int endRow, int endCol, Squa
 
 std::string Queen::getSymbol() const
 {
-    return this->getColor() == Color::WHITE ? "Q" : "q";
+  return this->getColor() == Color::WHITE ? "Q" : "q";
 }
 
 PieceType Queen::getType() const

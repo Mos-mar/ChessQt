@@ -1,6 +1,7 @@
 #ifndef BOARDWIDGET_H
 #define BOARDWIDGET_H
 
+//Custom headers and forward declaration
 #include <QWidget>
 #include <memory>
 #include "square.h"
@@ -22,6 +23,8 @@ private:
 
 public:
     BoardWidget(QWidget *parent = nullptr);
+
+    //methods
     void initializeBoardAndPieces();  //called in boardWidget constructor.
     bool movePiece(Player* currentPlayer, int startRow, int startCol, int endRow, int endCol);
 

@@ -21,11 +21,25 @@ bool Pawn::isValidMove(int startRow, int startCol, int endRow, int endCol, Squar
 
     int direction = (getColor() == Color::WHITE) ?  -1 : 1;
 
-    if(colMovement !=0) return false;
+    //can only move straight forward if no enemy piece present diagonally
+    if(colMovement !=0 && board[endRow][endCol]->getPiece() == nullptr)
+    {
+        return false;
+    }
 
+    //to be able to move forward if no piece in front
     if(rowMovement == direction && board[endRow][endCol]->getPiece() == nullptr)
     {
        return true;
+    }
+
+    //to be able to move diagonally if enemy piece
+    if(board[endRow][endCol]->getPiece())
+    {
+        if(board[endRow][endCol]->getPiece()->getColor() != board[startRow][startCol]->getPiece()->getColor())
+        {
+            return true;
+        }
     }
 
     if(

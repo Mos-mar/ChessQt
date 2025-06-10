@@ -24,7 +24,6 @@ ChessBoard::ChessBoard(QWidget *parent)
     BoardWidget* boardWidget = new BoardWidget(this);
     setCentralWidget(boardWidget); //set our board as the central widget of chessboard which is the QMainWindow
     this->update(); //Qt actually handle the drawing and will call void paintEvent(QPaintEvent *event) on its own
-
 }
 
 ChessBoard::~ChessBoard()
